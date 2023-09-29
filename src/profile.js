@@ -11,7 +11,7 @@ const Profile = () => {
   return (
     <Appbar.Header>
       <Appbar.BackAction onPress={_goBack} />
-      <Appbar.Content title="Title" />
+      <Appbar.Content title="My Profile" />
       <Appbar.Action icon="magnify" onPress={_handleSearch} />
       <Appbar.Action icon="dots-vertical" onPress={_handleMore} />
     </Appbar.Header>

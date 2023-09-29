@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { TextInput } from 'react-native-paper';
+import { Button, StyleSheet, View } from 'react-native';
+import { IconButton, TextInput } from 'react-native-paper';
 
 const Login = () => {
     const [name, setName] = useState("");
@@ -9,7 +9,7 @@ const Login = () => {
     const [password, setPassword] = useState("");
 
     return (
-        <View class={style.flex}>
+        <View style={style.flex}>
             {/* <TextInput
                 label="Name"
                 value={name}
@@ -18,25 +18,37 @@ const Login = () => {
             /> */}
             <TextInput
                 label="Email"
+                style={style.input}
                 value={email}
                 type={'outlined'}
                 onChangeText={text => setEmail(text)}
             />
             <TextInput
+                style={style.input}
                 label="Password"
                 value={password}
                 type={'outlined'}
                 onChangeText={text => setPassword(text)} />
+            <Button style={style.button} title={'Login'} />
         </View>
     );
 };
 const style = StyleSheet.create({
     flex: {
         display: 'flex',
-        justifyContent: 'center',
-        width:10,
-        alignContent: 'center'
-
+        marginTop: 250,
+        marginLeft: 45
+    },
+    input: {
+        borderRadius: 10,
+        width: 300,
+        margin: 10,
+    },
+    button: {
+        // borderRadius: 10,
+        color:'red',
+        width: 100,
+        margin: 10,
     }
 })
 
