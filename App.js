@@ -1,42 +1,27 @@
 import * as React from 'react';
-import { BottomNavigation, Text } from 'react-native-paper';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import Profile from './src/profile';
-import Login from './Login';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './src/rootActivities/Homescreen';
+import Signup from './src/rootActivities/Signup';
 
-const ProfileRoute = () => <Profile />
-
-const AlbumsRoute = () => <Text>Albums</Text>;
-
-const RecentsRoute = () => <Text>Recents</Text>;
-
-const NotificationsRoute = () => <Text>Notifications</Text>;
+const Stack = createNativeStackNavigator();
 
 const App = () => {
-  const [index, setIndex] = React.useState(0);
-  const [user, setUser] = React.useState(false)
-  const [routes] = React.useState([
-    { key: 'MyProfile', title: 'My Profile', focusedIcon: 'heart', unfocusedIcon: 'heart-outline' },
-    { key: 'albums', title: 'Albums', focusedIcon: 'album' },
-    { key: 'recents', title: 'Recents', focusedIcon: 'history' },
-    { key: 'notifications', title: 'Notifications', focusedIcon: 'bell', unfocusedIcon: 'bell-outline' },
-    ]);
 
-  const renderScene = BottomNavigation.SceneMap({
-    MyProfile: ProfileRoute,
-    albums: AlbumsRoute,
-    recents: RecentsRoute,
-    notifications: NotificationsRoute,
-  });
 
   return (
-    <SafeAreaProvider>
-      {!user?<Login />:<BottomNavigation
-        navigationState={{ index, routes }}
-        onIndexChange={setIndex}
-        renderScene={renderScene}
-      />}
-    </SafeAreaProvider>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: 'Shared-Gpt' }} />
+        <Stack.Screen
+          name="Signup"
+          component={Signup}
+          options={{ title: 'Sign-Up' }} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
