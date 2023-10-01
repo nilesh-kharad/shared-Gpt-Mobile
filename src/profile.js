@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Appbar } from 'react-native-paper';
 
-const Profile = () => {
+const Profile = (user) => {
+  console.log('user', user.name);
   const _goBack = () => console.log('Went back');
 
   const _handleSearch = () => console.log('Searching');
@@ -11,7 +12,7 @@ const Profile = () => {
   return (
     <Appbar.Header>
       <Appbar.BackAction onPress={_goBack} />
-      <Appbar.Content title="My Profile" />
+      <Appbar.Content title={user?.user?.givenName} />
       <Appbar.Action icon="magnify" onPress={_handleSearch} />
       <Appbar.Action icon="dots-vertical" onPress={_handleMore} />
     </Appbar.Header>

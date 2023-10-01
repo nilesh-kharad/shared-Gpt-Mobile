@@ -6,36 +6,35 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Login from './Login';
 import { BottomNavigation, Text } from 'react-native-paper';
 import Profile from '../profile';
+import Logout from './Logout';
 
-const ProfileRoute = () => <Profile />
-
-const AlbumsRoute = () => <Text>Albums</Text>;
-
-const RecentsRoute = () => <Text>Recents</Text>;
-
-const NotificationsRoute = () => <Text>Notifications</Text>;
 
 const HomeScreen = ({ navigation }) => {
     const [index, setIndex] = React.useState(0);
-    const [user, setUser] = React.useState(false)
+    const [user, setUser] = React.useState()
+    const ProfileRoute = () => <Profile user={user} />
+
+    const LogoutRoute = () => <Logout setUser={setUser} />;
+
+    const ChatGptRoute = () => <Text>Recents</Text>;
+
     const [routes] = React.useState([
         { key: 'MyProfile', title: 'My Profile', focusedIcon: 'heart', unfocusedIcon: 'heart-outline' },
-        { key: 'albums', title: 'Albums', focusedIcon: 'album' },
-        { key: 'recents', title: 'Recents', focusedIcon: 'history' },
-        { key: 'notifications', title: 'Notifications', focusedIcon: 'bell', unfocusedIcon: 'bell-outline' },
+        { key: 'chatGpt', title: 'Chat-Gpt', focusedIcon: 'album' },
+        { key: 'logout', title: 'Logout', focusedIcon: 'album' }
     ]);
-
+   
     const renderScene = BottomNavigation.SceneMap({
         MyProfile: ProfileRoute,
-        albums: AlbumsRoute,
-        recents: RecentsRoute,
-        notifications: NotificationsRoute,
+        chatGpt: ChatGptRoute,
+        logout: LogoutRoute
     });
+    
     return (
         <SafeAreaProvider>
             {!user ?
                 <>
-                    <Login />
+                    <Login setUser={setUser} />
                     <Button style={{ width: 200, marginLeft: 100 }} mode="contained-tonal" onPress={() => navigation.navigate('Signup')}>
                         Register
                     </Button>
