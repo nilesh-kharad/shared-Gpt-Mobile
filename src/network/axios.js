@@ -32,6 +32,3 @@ export async function postRequest({ headers = {}, url, data }) {
         return { statusText: 'NOT_OK' }
     }
 }
-
-
-// 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
