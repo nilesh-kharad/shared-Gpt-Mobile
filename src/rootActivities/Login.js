@@ -22,7 +22,11 @@ const style = StyleSheet.create({
     btn: {
         color: 'red',
         backgroundColor: 'red'
-    }
+    },
+    tinyLogo: {
+        width: 66,
+        height: 58,
+    },
 })
 const Login = (props) => {
     const [email, setEmail] = useState("");
@@ -49,7 +53,7 @@ const Login = (props) => {
     }, [])
     return (
         <View style={style.flex}>
-            <TextInput
+            {/* <TextInput
                 label="Email"
                 style={style.input}
                 value={email}
@@ -64,7 +68,7 @@ const Login = (props) => {
                 onChangeText={text => setPassword(text)} />
             <Button mode="contained-tonal" onPress={() => console.warn('Pressed')}>
                 Login
-            </Button>
+            </Button> */}
             <GoogleSigninButton
                 size={GoogleSigninButton.Size.Wide}
                 color={GoogleSigninButton.Color.Dark}

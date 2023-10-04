@@ -1,1 +1,1 @@
-export const getChatGptResponseUrl = ''
+export const getChatGptResponseUrl = 'https://api.openai.com/v1/chat/completions'

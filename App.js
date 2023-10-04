@@ -18,11 +18,11 @@ const App = () => {
           name="Home"
           component={HomeScreen}
           options={{ title: 'Shared-Gpt' }} />
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Signup"
           component={Signup}
           options={{ title: 'Sign-Up' }}
-        />
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
